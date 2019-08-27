@@ -5,7 +5,7 @@
 
   <remote fetch="git://git.yoctoproject.org" name="yocto"/>
   <remote fetch="git://github.com/openembedded" name="oe"/>
-  <project remote="yocto" revision="01b8a8b54bc569e5ef3f5e6fc6abcee365ab25d9" name="poky" path="sources/poky"/>
+  <project remote="yocto" revision="38d5c8ea98cfa49825c473eba8984c12edf062be" name="poky" path="sources/poky"/>
   <project remote="oe" revision="8d5dcd6522e9d15e68637b6d7dda0401f9bb91d0" name="meta-openembedded" path="sources/meta-openembedded"/>
 
 </manifest>
