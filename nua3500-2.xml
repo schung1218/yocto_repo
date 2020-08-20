@@ -5,6 +5,7 @@
 
   <remote fetch="git://git.yoctoproject.org" name="yocto"/>
   <remote fetch="git://github.com/openembedded" name="oe"/>
+  <remote fetch="git://github.com/meta-qt5" name="qt"/>
   <project remote="yocto" revision="5e1bc3ef5ac83b244102011dc5bfd167a6342514" name="poky" path="sources/poky"/>
   <project remote="oe" revision="2cf66ec68f32e7fdebaf683ad9b05c399662960f" name="meta-openembedded" path="sources/meta-openembedded"/>
   <project remote="qt" revision="5144a99a696a8a72c0765ea0e8be8ceafaa78f85" name="meta-qt5" path="sources/meta-qt5"/>
