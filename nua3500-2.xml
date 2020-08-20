@@ -8,7 +8,7 @@
   <project remote="yocto" revision="5e1bc3ef5ac83b244102011dc5bfd167a6342514" name="poky" path="sources/poky"/>
   <project remote="oe" revision="2cf66ec68f32e7fdebaf683ad9b05c399662960f" name="meta-openembedded" path="sources/meta-openembedded"/>
   <project remote="qt" revision="5144a99a696a8a72c0765ea0e8be8ceafaa78f85" name="meta-qt5" path="sources/meta-qt5"/>
-  <project remote="yocto" revision="65abc719f369bb4edf62d66e36a6a6fe7771004a" name=" meta-virtualization" path="sources/ meta-virtualization"/>
+  <project remote="yocto" revision="65abc719f369bb4edf62d66e36a6a6fe7771004a" name=" meta-virtualization" path="sources/meta-virtualization"/>
  
 
 </manifest>
