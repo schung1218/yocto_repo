@@ -6,11 +6,10 @@ repo sync
 
 # build yocto
 
-DISTRO=nuvoton-nua3500-fb MACHINE=nua3500evb source init-build-env build
+DISTRO=nuvoton-nua3500-fb MACHINE=nua3500evb source  sources/init-build-env build
 
-Usage:
+###### Usage:
 	MACHINE=<machine> DISTRO=<distro> source sources/init-build-env <build-dir>
-
-    	<machine>    machine name
+	<machine>    machine name
 	<distro>     distro name
 	<build-dir>  build directory
