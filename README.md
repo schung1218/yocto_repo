@@ -8,7 +8,7 @@ repo sync
 
 DISTRO=nuvoton-nua3500-fb MACHINE=nua3500evb source setup-environment build
 
-##Usage:
+## Usage:
 	MACHINE=<machine> DISTRO=<distro> source sources/setup-environment <build-dir>
 	<machine>    machine name
 	<distro>     distro name
