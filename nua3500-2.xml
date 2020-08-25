@@ -2,7 +2,7 @@
 <manifest>
 
   <default sync-j="2"/>
-  <remote fetch="git://github.com/schung1218" name="nua3500">
+  <remote fetch="git://github.com/schung1218" name="nua3500"/>
   <remote fetch="git://git.yoctoproject.org" name="yocto"/>
   <remote fetch="git://github.com/openembedded" name="oe"/>
   <remote fetch="git://github.com/meta-qt5" name="qt"/>
