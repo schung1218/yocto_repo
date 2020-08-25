@@ -4,7 +4,7 @@ repo init -u git://github.com/schung1218/yocto_repo.git -m nua3500.xml
 
 repo sync
 
-# how to build yocto
+# build yocto
 
 DISTRO=nuvoton-nua3500-fb MACHINE=nua3500evb source setup-environment build
 
