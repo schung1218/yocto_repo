@@ -16,9 +16,9 @@ DISTRO=nuvoton-nua3500-fb MACHINE=nua3500evb source  sources/init-build-env buil
 
 # setp by step
 To build and use the yocto, do the following:
-'''
+```
 $ repo init -u git://github.com/schung1218/yocto_repo.git -m meta-nua3500/base/nua3500.xml
 $ repo sync
 $ DISTRO=nuvoton-nua3500-fb MACHINE=nua3500evb source  sources/init-build-env build
 $ bitbake core-image-minimal
-'''
+```
