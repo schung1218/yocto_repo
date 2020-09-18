@@ -92,7 +92,7 @@ index 0000000..fdb93bf
 +	model = "Nuvoton NUA3500-EVB";
 +
 +	chosen {
-+		bootargs = "root=/dev/ram0 console=ttyS0,9600n8 rdinit=/linuxrc mem=128M";
++		bootargs = "root=/dev/ram0 rw console=ttyS0,9600n8 init=/bin/busybox mem=128M initrd=0x85000000,16M";
 +//		bootargs = "root=/dev/ram0 console=ttyS0,9600n8 rdinit=/linuxrc mem=64M";
 +	};
 +};
@@ -474,8 +474,8 @@ index 0000000..52c429a
 +# CONFIG_SCHED_AUTOGROUP is not set
 +# CONFIG_SYSFS_DEPRECATED is not set
 +# CONFIG_RELAY is not set
-+# CONFIG_BLK_DEV_INITRD is not set
-+CONFIG_INITRAMFS_SOURCE="../rootfs"
++CONFIG_BLK_DEV_INITRD=y
++CONFIG_INITRAMFS_SOURCE=""
 +CONFIG_INITRAMFS_ROOT_UID=0
 +CONFIG_INITRAMFS_ROOT_GID=0
 +CONFIG_RD_GZIP=y
@@ -1341,7 +1341,7 @@ index 0000000..52c429a
 +# CONFIG_BLK_DEV_NBD is not set
 +CONFIG_BLK_DEV_RAM=y
 +CONFIG_BLK_DEV_RAM_COUNT=16
-+CONFIG_BLK_DEV_RAM_SIZE=4096
++CONFIG_BLK_DEV_RAM_SIZE=16384
 +# CONFIG_CDROM_PKTCDVD is not set
 +# CONFIG_ATA_OVER_ETH is not set
 +# CONFIG_BLK_DEV_RBD is not set
@@ -2009,7 +2009,8 @@ index 0000000..52c429a
 +#
 +CONFIG_DCACHE_WORD_ACCESS=y
 +# CONFIG_VALIDATE_FS_PARSER is not set
-+# CONFIG_EXT2_FS is not set
++CONFIG_EXT2_FS=y
++CONFIG_EXT2_FS_XATTR=y
 +# CONFIG_EXT3_FS is not set
 +# CONFIG_EXT4_FS is not set
 +# CONFIG_REISERFS_FS is not set
