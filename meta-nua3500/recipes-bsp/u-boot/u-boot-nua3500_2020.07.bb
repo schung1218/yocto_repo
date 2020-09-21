@@ -12,7 +12,8 @@ LIC_FILES_CHKSUM = "file://Licenses/gpl-2.0.txt;md5=b234ee4d69f5fce4486a80fdaf4a
 UBOOT_SRC ?= "git://github.com/u-boot/u-boot.git;protocol=https"
 SRCBRANCH = "2020.07"
 SRC_URI = "${UBOOT_SRC}"
-SRCREV= "2f5fbb5b39f7b67044dda5c35e4a4b31685a3109"
+#SRCREV= "2f5fbb5b39f7b67044dda5c35e4a4b31685a3109"
+SRCREV = "master"
 
 
 PV = "${SRCBRANCH}"
