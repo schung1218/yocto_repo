@@ -9,12 +9,13 @@ DEPENDS += "dtc-native bc-native flex-native bison-native"
 LICENSE = "GPLv2+"
 LIC_FILES_CHKSUM = "file://Licenses/gpl-2.0.txt;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
-UBOOT_SRC ?= "git://github.com/u-boot/u-boot.git;protocol=https"
+#UBOOT_SRC ?= "git://github.com/u-boot/u-boot.git;protocol=https"
+UBOOT_SRC ?= "git://github.com/schung1218/nua3500-u-boot-v2020.07.git;protocol=https"
+
 SRCBRANCH = "2020.07"
 SRC_URI = "${UBOOT_SRC}"
 #SRCREV= "2f5fbb5b39f7b67044dda5c35e4a4b31685a3109"
 SRCREV = "master"
-
 
 PV = "${SRCBRANCH}"
 S = "${WORKDIR}/git"
@@ -22,7 +23,7 @@ B = "${WORKDIR}/build"
 
 LOCALVERSION ?= "-${SRCBRANCH}"
 
-UBOOT_MACHINE = "imx8qxp_mek_defconfig"
+#UBOOT_MACHINE = "imx8qxp_mek_defconfig"
 
 #do_compile_append_nua3500(){
 #	oe_runmake -C ${S} O=${B}/${UBOOT_MACHINE} DEVICE_TREE=${devicetree} DEVICE_TREE_EXT=${devicetree}.dtb

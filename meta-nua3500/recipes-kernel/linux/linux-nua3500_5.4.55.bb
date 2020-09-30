@@ -17,21 +17,25 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=bbea815ee2795b2f4230826c0c6b8814"
 
 SRCBRANCH = "linux-5.4.y"
 LOCALVERSION = "-${SRCBRANCH}"
-KERNEL_SRC ?= "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git;proctocl=git"
-SRC_URI = "${KERNEL_SRC};branch=${SRCBRANCH}"
+#KERNEL_SRC ?= "git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git;proctocl=git"
+#SRC_URI = "${KERNEL_SRC};branch=${SRCBRANCH}"
+
+KERNEL_SRC ?= "git://github.com/schung1218/nua3500-linux-5.4.y.git;protocol=https"
+SRC_URI = "${KERNEL_SRC}"
+
 SRCREV="${AUTOREV}"
 S = "${WORKDIR}/git"
 B = "${WORKDIR}/build"
 
-SRC_URI += " \
-	file://0001-Add-NUA3500.patch \
-	file://0002-Update-Uart.patch \
-	file://0003-Add-nua3500-pinfunc.h.patch \
-	file://0004-Add-RTC-driver.patch \
-	file://0005-USBH-Add-USB-Host-controller-EHCI0-1-and-OHCI0-1-2-d.patch \
-	file://0006-KS-Add-Key-Store-driver.patch \
-	file://0007-add-KPI-driver-and-update-dtsi-for-UART-RTC-KPI.patch \
-	"
+#SRC_URI += " \
+#	file://0001-Add-NUA3500.patch \
+#	file://0002-Update-Uart.patch \
+#	file://0003-Add-nua3500-pinfunc.h.patch \
+#	file://0004-Add-RTC-driver.patch \
+#	file://0005-USBH-Add-USB-Host-controller-EHCI0-1-and-OHCI0-1-2-d.patch \
+#	file://0006-KS-Add-Key-Store-driver.patch \
+#	file://0007-add-KPI-driver-and-update-dtsi-for-UART-RTC-KPI.patch \
+#	"
 
 #DEPENDS += "lzop-native bc-native"
 DEPENDS += "openssl-native util-linux-native libyaml-native"
