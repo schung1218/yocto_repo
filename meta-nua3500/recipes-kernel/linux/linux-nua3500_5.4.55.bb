@@ -27,37 +27,13 @@ SRCREV="${AUTOREV}"
 S = "${WORKDIR}/git"
 B = "${WORKDIR}/build"
 
-#SRC_URI += " \
-#	file://0001-Add-NUA3500.patch \
-#	file://0002-Update-Uart.patch \
-#	file://0003-Add-nua3500-pinfunc.h.patch \
-#	file://0004-Add-RTC-driver.patch \
-#	file://0005-USBH-Add-USB-Host-controller-EHCI0-1-and-OHCI0-1-2-d.patch \
-#	file://0006-KS-Add-Key-Store-driver.patch \
-#	file://0007-add-KPI-driver-and-update-dtsi-for-UART-RTC-KPI.patch \
-#	"
-
-#DEPENDS += "lzop-native bc-native"
 DEPENDS += "openssl-native util-linux-native libyaml-native"
-
 DEFAULT_PREFERENCE = "1"
-
-
 # =========================================================================
 # Kernel
 # =========================================================================
-# Kernel device tree
-KERNEL_DEVICETREE = "nuvoton/nua3500-evb.dtb"
-
 # Kernel image type
 KERNEL_IMAGETYPE = "Image"
-
-# Defconfig
-#KERNEL_DEFCONFIG        = "defconfig"
-
-# Module kernel signature
-#KERNEL_SIGN_ENABLE ?= "0"
-#EXTRA_OEMAKE += "${@oe.utils.ifelse(d.getVar('KERNEL_SIGN_ENABLE') == '1', 'INSTALL_MOD_STRIP=1','')}"
 
 do_configure_prepend() {
     bbnote "Copying defconfig"
