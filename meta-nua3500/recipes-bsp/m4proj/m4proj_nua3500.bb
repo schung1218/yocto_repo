@@ -80,6 +80,6 @@ do_deploy() {
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 COMPATIBLE_MACHINE = "(nua3500)"
 
-addtask deploy after do_compile
+addtask deploy after do_install
 
 
