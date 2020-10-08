@@ -66,7 +66,7 @@ python do_install() {
     f.write("======= m480-bsp =======\n")
     for dirPath, dirNames, fileNames in os.walk("SampleCode/StdDriver"):
         for file in fnmatch.filter(fileNames, '*.elf'):
-            cmd = "cp "+ dirPath + "/" + file +" "+ d.getVar('D',1)
+            cmd = "cp -a "+ dirPath + "/" + file +" "+ d.getVar('D',1)
             f.write("cmd="+cmd+"\n")
             subprocess.call(cmd,shell=True,stdout=f)
     os.chdir(root)
@@ -74,10 +74,12 @@ python do_install() {
 }
 
 do_deploy() {
-	echo ${S}
+    cp -r ${D} ${DEPLOYDIR}/${BOOT_TOOLS}/m4proj
 }
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 COMPATIBLE_MACHINE = "(nua3500)"
+
+addtask deploy after do_compile
 
 
