@@ -46,19 +46,20 @@ python do_compile() {
     f.write("S="+d.getVar('S',1)+"\n")
     f.write("NUECLIPSE="+d.getVar('NUECLIPSE',1))
     f.write("\n======= m480-bsp =======\n")
-    for dirPath, dirNames, fileNames in os.walk('SampleCode'):
+    for dirPath, dirNames, fileNames in os.walk("SampleCode/StdDriver"):
         for file in fnmatch.filter(fileNames, '*.cproject'):
-            f.write("dirPath="+dirPath+"\n")
-            if not os.path.isdir("Temp"):
-                os.mkdir("Temp")
-            else:
+            if not os.path.isdir(dirPath+"/Release"):
+                f.write("dirPath="+dirPath+"\n")
+                if not os.path.isdir("Temp"):
+                    os.mkdir("Temp")
+                else:
+                    shutil.rmtree("Temp")
+                    os.mkdir("Temp")
+                cmd = "Xvfb :99>/dev/null & " +d.getVar('NUECLIPSE',1)+"/eclipse/eclipse -nosplash --launcher.suppressErrors -application org.eclipse.cdt.managedbuilder.core.headlessbuild -data Temp -cleanBuild all -import "+dirPath + "\n"
+                f.write("cmd="+cmd+"\n")
+                f.flush()
+                retcode = subprocess.call(cmd,shell=True,stdout=f)
                 shutil.rmtree("Temp")
-                os.mkdir("Temp")
-            cmd = "Xvfb :99>/dev/null & " +d.getVar('NUECLIPSE',1)+"/eclipse/eclipse -nosplash --launcher.suppressErrors -application org.eclipse.cdt.managedbuilder.core.headlessbuild -data Temp -cleanBuild all -import "+dirPath + "\n"
-            f.write("cmd="+cmd+"\n")
-            f.flush()
-            retcode = subprocess.call(cmd,shell=True,stdout=f)
-            shutil.rmtree("Temp")
     os.chdir(root)
     f.close()
 }
@@ -76,7 +77,7 @@ python do_install() {
     f.write("NUECLIPSE="+d.getVar('NUECLIPSE',1)+"\n")
     #f.write("PDK_INSTALL_DIR_RECIPE="+d.getVar('PDK_INSTALL_DIR_RECIPE',1)+"\n")
     f.write("======= m480-bsp =======\n")
-    for dirPath, dirNames, fileNames in os.walk('SampleCode'):
+    for dirPath, dirNames, fileNames in os.walk("SampleCode/StdDriver"):
         for file in fnmatch.filter(fileNames, '*.elf'):
             cmd = "cp "+ dirPath + "/" + file +" "+ d.getVar('D',1)
             f.write("cmd="+cmd+"\n")
