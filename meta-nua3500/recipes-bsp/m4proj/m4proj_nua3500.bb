@@ -30,6 +30,7 @@ B =  "${WORKDIR}/build"
 export CROSS_COMPILE = "${RECIPE_SYSROOT_NATIVE}/${datadir}/gcc-arm-none-eabi/bin/arm-none-eabi-"
 export GCC_PATH = "${RECIPE_SYSROOT_NATIVE}/${datadir}/gcc-arm-none-eabi/bin"
 export NUECLIPSE = "${RECIPE_SYSROOT_NATIVE}/${datadir}/nu-eclipse"
+export DISPLAY= ":99"
 #nu-eclipse
 
 python do_compile() {
@@ -53,7 +54,7 @@ python do_compile() {
             else:
                 shutil.rmtree("Temp")
                 os.mkdir("Temp")
-            cmd = d.getVar('NUECLIPSE',1)+"/eclipse/eclipse -nosplash --launcher.suppressErrors -application org.eclipse.cdt.managedbuilder.core.headlessbuild -data Temp -cleanBuild all -import "+dirPath + "\n"
+            cmd = "Xvfb :99>/dev/null & " +d.getVar('NUECLIPSE',1)+"/eclipse/eclipse -nosplash --launcher.suppressErrors -application org.eclipse.cdt.managedbuilder.core.headlessbuild -data Temp -cleanBuild all -import "+dirPath + "\n"
             f.write("cmd="+cmd+"\n")
             f.flush()
             retcode = subprocess.call(cmd,shell=True,stdout=f)
