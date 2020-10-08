@@ -3,35 +3,22 @@ DESCRIPTION = "NUA3500 M4 BSP suppporting nua3500 ev boards."
 DEPENDS = " gcc-arm-none-eabi-native nu-eclipse-native "
 
 inherit deploy
-#require recipes-bsp/includes/paths.inc
 
 LICENSE = "BSD"
 LIC_FILES_CHKSUM = "file://Readme.pdf;md5=7d0111ef81ddfefe54601cebe12be7c4"
 
-SRCREV="${AUTOREV}"
+SRCREV= "master"
 
 SRC_URI = "git://github.com/OpenNuvoton/M480BSP.git;protocol=https;branch=master"
-
-
 
 PV = "M4-BSP"
 S = "${WORKDIR}/git"
 B =  "${WORKDIR}/build"
-# for external source support with devtools
-#EXTERNALSRC_BUILD_pn-${PN} = "${WORKDIR}/build"
-
-#inherit systemd
-
-#do_configure() {
-#	echo  ${S}
-#	echo  ${BSP_RECIPE}
-#}
 
 export CROSS_COMPILE = "${RECIPE_SYSROOT_NATIVE}/${datadir}/gcc-arm-none-eabi/bin/arm-none-eabi-"
 export GCC_PATH = "${RECIPE_SYSROOT_NATIVE}/${datadir}/gcc-arm-none-eabi/bin"
 export NUECLIPSE = "${RECIPE_SYSROOT_NATIVE}/${datadir}/nu-eclipse"
 export DISPLAY= ":99"
-#nu-eclipse
 
 python do_compile() {
     import os
@@ -89,18 +76,6 @@ python do_install() {
 do_deploy() {
 	echo ${S}
 }
-
-#FILES_${PN} += "${PDK_INSTALL_DIR_RECIPE}/packages"
-
-#INSANE_SKIP_${PN} += "installed-vs-shipped"
-#ALLOW_EMPTY_${PN} = "1"
-
-#INHIBIT_PACKAGE_DEBUG_SPLIT = "1"
-#INHIBIT_PACKAGE_STRIP = "1"
-#INHIBIT_SYSROOT_STRIP = "1"
-
-#deltask do_populate_sysroot do_prepare_recipe_sysroot
-#deltask do_prepare_recipe_sysroot
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 COMPATIBLE_MACHINE = "(nua3500)"
