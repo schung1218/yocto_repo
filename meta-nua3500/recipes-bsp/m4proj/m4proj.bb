@@ -60,26 +60,31 @@ python do_install() {
     f = open('install_log.txt', "w+")
     root = os.getcwd()
     os.chdir(d.getVar('S',1))
+
+    subprocess.call("mkdir -p " + d.getVar('D',1) + d.getVar('exec_prefix',1)+ "/m4proj",shell=True,stdout=f)
     f.write("S="+d.getVar('S',1)+"\n")
     f.write("NUECLIPSE="+d.getVar('NUECLIPSE',1)+"\n")
     #f.write("PDK_INSTALL_DIR_RECIPE="+d.getVar('PDK_INSTALL_DIR_RECIPE',1)+"\n")
     f.write("======= m480-bsp =======\n")
     for dirPath, dirNames, fileNames in os.walk("SampleCode/StdDriver"):
         for file in fnmatch.filter(fileNames, '*.elf'):
-            cmd = "cp -a"+ dirPath + "/" + file +" "+ d.getVar('D',1)
+            cmd = "cp "+ dirPath + "/" + file +" "+ d.getVar('D',1) + d.getVar('exec_prefix',1) + "/m4proj"
             f.write("cmd="+cmd+"\n")
             subprocess.call(cmd,shell=True,stdout=f)
+    subprocess.call("chmod 644 " + d.getVar('D',1) + d.getVar('exec_prefix',1)+ "/m4proj/*",shell=True,stdout=f)
     os.chdir(root)
     f.close()
 }
 
 do_deploy() {
-    cp -r ${D} ${DEPLOYDIR}/${BOOT_TOOLS}/m4proj
+    install -d ${DEPLOYDIR}/${BOOT_TOOLS}/m4proj
+    cp -rf ${D}/${exec_prefix}/m4proj/* ${DEPLOYDIR}/${BOOT_TOOLS}/m4proj/
 }
 
+INSANE_SKIP_${PN} = "arch"
+FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+FILES_${PN} += "${exec_prefix}/m4proj/*"
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 COMPATIBLE_MACHINE = "(nua3500)"
-
 addtask deploy after do_install
-
 
