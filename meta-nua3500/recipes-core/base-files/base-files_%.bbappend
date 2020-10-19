@@ -1,1 +1,1 @@
-FILESEXTRAPATHS_prepend_nvt_common := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS_prepend_nua3500 := "${THISDIR}/${PN}:"
