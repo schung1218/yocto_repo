@@ -1,1 +1,1 @@
-DUMMYPROVIDES_remove_stm32mpcommon = "busybox-dev perl-dev"
+DUMMYPROVIDES_remove_nvt_common = "busybox-dev perl-dev"

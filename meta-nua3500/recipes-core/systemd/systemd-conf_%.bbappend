@@ -1,4 +1,4 @@
-do_install_append_stm32mpcommon() {
+do_install_append_nvt_common() {
     # enable watchdog on systemd configuration
     if ${@bb.utils.contains('MACHINE_FEATURES','watchdog','true','false',d)}; then
         install -d ${D}${systemd_unitdir}/system.conf.d/

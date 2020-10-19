@@ -16,7 +16,7 @@ inherit deploy python3native
 OPTEEMACHINE ?= "${MACHINE}"
 OPTEEOUTPUTMACHINE ?= "${MACHINE}"
 
-SUMMARY = "OPTEE TA development kit for stm32mp"
+SUMMARY = "OPTEE TA development kit for nua3500"
 LICENSE = "BSD-2-Clause & BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=c1f21c4f72f372ef38a5a4aee55ec173"
 
@@ -24,10 +24,6 @@ COMPATIBLE_MACHINE = "(nua3500)"
 
 SRC_URI = "git://github.com/OP-TEE/optee_os.git;protocol=https;name=os"
 SRCREV = "bc5921cdab538c8ae48422f5ffd600f1cbdd95b2"
-
-#SRC_URI += " \
-#    file://0001-3.9.0-stm32mp-r1.patch \
-#    "
 
 OPTEE_VERSION = "3.9.0"
 PV = "${OPTEE_VERSION}"

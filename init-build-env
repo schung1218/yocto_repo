@@ -165,6 +165,7 @@ Common targets are:
     meta-toolchain
     meta-toolchain-sdk
     meta-ide-support
+    nvt-image-qt5
 
 EOF
 

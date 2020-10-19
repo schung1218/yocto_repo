@@ -3,34 +3,29 @@
 #@DESCRIPTION: Configuration for all NUA3500 boards (EV, DK, ...)
 #@NEEDED_BSPLAYERS: layers/meta-openembedded/meta-oe layers/meta-openembedded/meta-python
 
-MACHINEOVERRIDES = "nua3500:nua3500evb"
+MACHINEOVERRIDES = "nua3500"
 
 # =========================================================================
 # Chip architecture
 # =========================================================================
-DEFAULTTUNE = "cortexa35"
 DEFAULTTUNE_nua3500 = "cortexa35"
 include conf/machine/include/tune-cortexa35.inc
 
 # =========================================================================
 # Kernel
 # =========================================================================
-PREFERRED_PROVIDER__kernel = "linux-nua3500"
+PREFERRED_PROVIDER_kernel = "linux-nua3500"
 PREFERRED_PROVIDER_virtual/kernel = "linux-nua3500"
-KERNEL_DEVICETREE = "nuvoton/nua3500-evb.dtb"
 
 # =========================================================================
 # u-boot
 # =========================================================================
 PREFERRED_PROVIDER_u-boot = "u-boot-nua3500"
 PREFERRED_PROVIDER_virtual/bootloader = "u-boot-nua3500"
-UBOOT_CONFIG ??= "sdcard"
-
-UBOOT_CONFIG[spi] = "nua3500_defconfig"
-UBOOT_CONFIG[spinand] = "nua3500_defconfig"
-UBOOT_CONFIG[sdcard] = "nua3500_defconfig"
 
 EXTRA_IMAGEDEPENDS += "virtual/bootloader"
+
+UBOOT_ENTRYPOINT_nua3500 = "0x80E00000"
 # =========================================================================
 # trusted-firmware-a
 # =========================================================================
@@ -62,5 +57,4 @@ SERIAL_CONSOLES = "115200;ttyS0"
 # we do not want to have getty running on tty1 as we run
 # auto-serial-console there
 USE_VT = "0"
-
 
