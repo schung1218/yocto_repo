@@ -46,7 +46,7 @@ EXTRA_IMAGEDEPENDS += "m4proj"
 # =========================================================================
 # fs
 # =========================================================================
-IMAGE_FSTYPES = "ext2 tar.bz2"
+IMAGE_FSTYPES = " ext2 tar.bz2 "
 
 #IMAGE_CLASSES = "image_types_nvt"
 
