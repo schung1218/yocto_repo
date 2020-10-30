@@ -38,7 +38,6 @@ EXTRA_OEMAKE = " \
 		NOWERROR=1 \
 		LDFLAGS= \
 		comp-cflagscore='--sysroot=${STAGING_DIR_TARGET}' \
-		CFLAGS='-mno-outline-atomics' \
         "
 
 export PLATFORM="imx"
