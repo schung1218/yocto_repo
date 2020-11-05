@@ -35,8 +35,8 @@ do_compile(){
 }
 
 do_deploy() {
-    install -d ${DEPLOYDIR}/${BOOT_TOOLS}/nuwriter-${PV}
-    cp -rf ${B}/nuwriter/* ${DEPLOYDIR}/${BOOT_TOOLS}/nuwriter-${PV}/
+    install -d ${DEPLOYDIR}/${BOOT_TOOLS}/nuwriter
+    cp -rf ${B}/nuwriter/* ${DEPLOYDIR}/${BOOT_TOOLS}/nuwriter/
 }
 
 FILES_${PN} = ""

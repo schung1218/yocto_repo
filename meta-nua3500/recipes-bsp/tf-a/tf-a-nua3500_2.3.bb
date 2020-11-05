@@ -37,7 +37,7 @@ AS[unexport] = "1"
 LD[unexport] = "1"
 
 # Configure nua3500 make settings
-PLATFORM = "nua3500"
+PLATFORM = "${TFA_PLATFORM}"
 export CROSS_COMPILE="${TARGET_PREFIX}"
 export ARCH="arm64"
 do_compile() {
@@ -48,5 +48,6 @@ do_compile() {
 
 do_deploy() {
     install -Dm 0644 ${S}/build/${PLATFORM}/release/bl31.bin ${DEPLOYDIR}/${BOOT_TOOLS}/bl31-${PLATFORM}.bin
+    install -Dm 755 ${S}/tools/fiptool/fiptool  ${DEPLOYDIR}/${BOOT_TOOLS}/fiptool
 }
 addtask deploy after do_compile

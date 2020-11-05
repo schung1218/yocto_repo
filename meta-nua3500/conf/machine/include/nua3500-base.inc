@@ -29,6 +29,7 @@ UBOOT_ENTRYPOINT_nua3500 = "0x80E00000"
 # =========================================================================
 # trusted-firmware-a
 # =========================================================================
+TFA_PLATFORM = "nua3500"
 PREFERRED_PROVIDER_virtual/trusted-firmware-a = "tf-a-nua3500"
 EXTRA_IMAGEDEPENDS += "virtual/trusted-firmware-a"
 
@@ -51,9 +52,9 @@ EXTRA_IMAGEDEPENDS += "python3-nuwriter-native"
 # =========================================================================
 # fs
 # =========================================================================
-IMAGE_FSTYPES = " ext2 tar.bz2 "
+IMAGE_FSTYPES = " pack ext2 tar.bz2 "
 
-#IMAGE_CLASSES = "image_types_nvt"
+IMAGE_CLASSES = "image_types_nvt"
 
 
 # Disable the serial console due to auto-serial-console
