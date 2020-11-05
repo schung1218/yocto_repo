@@ -12,10 +12,7 @@ S = "${WORKDIR}/git"
 B =  "${WORKDIR}/build"
 
 PACKAGES = ""
-#inherit pypi setuptools3
-do_compile[noexec] = "1"
 do_install[noexec] = "1"
-#do_package_write_rpm[noexec] = "1"
 
 DEPENDS += " \
     libusb1-native \
@@ -43,7 +40,4 @@ do_deploy() {
 }
 
 FILES_${PN} = ""
-#addtask do_run_testsuite before do_install after do_configure
-#addtask do_deploy after do_run_testsuite
 addtask deploy after do_compile
-#INSANE_SKIP_${PN}_append = "already-stripped" 
