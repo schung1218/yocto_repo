@@ -40,8 +40,8 @@ EXTRA_OEMAKE = " \
 		comp-cflagscore='--sysroot=${STAGING_DIR_TARGET}' \
         "
 
-export PLATFORM="imx"
-export PLATFORM_FLAVOR="mx8qxpmek"
+export PLATFORM = "${OPTEE_PLATFORM}"
+export PLATFORM_FLAVOR = "${OPTEE_PLATFORM_FLAVOR}"
 
 do_compile(){
 	oe_runmake -C ${S} O=${B}
@@ -63,5 +63,4 @@ do_deploy() {
     install -m 644 ${B}/core/${OPTEE_ELF}.${OPTEE_ELF_SUFFIX} ${DEPLOYDIR}/${OPTEE_ELF}-${OPTEE_BOOTCHAIN}.${OPTEE_ELF_SUFFIX}
 }
 addtask deploy before do_build after do_compile
-
 
