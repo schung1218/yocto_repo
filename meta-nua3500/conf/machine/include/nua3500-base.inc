@@ -54,10 +54,8 @@ EXTRA_IMAGEDEPENDS += "python3-nuwriter-native"
 # =========================================================================
 # fs
 # =========================================================================
-IMAGE_FSTYPES = " pack ext2 tar.bz2 "
-
+IMAGE_FSTYPES = " spinand sdcard nand ext2 tar.bz2 "
 IMAGE_CLASSES = "image_types_nvt"
-
 
 # Disable the serial console due to auto-serial-console
 SERIAL_CONSOLES = "115200;ttyS0"

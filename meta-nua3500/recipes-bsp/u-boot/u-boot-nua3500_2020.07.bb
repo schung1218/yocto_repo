@@ -17,11 +17,55 @@ SRCBRANCH = "2020.07"
 SRC_URI = "${UBOOT_SRC}"
 SRCREV = "master"
 
+SRC_URI += " file://uEnv-spinand.txt \
+             file://uEnv-nand.txt \
+             file://uEnv-sdcard.txt \
+           "
+
 PV = "${SRCBRANCH}"
 S = "${WORKDIR}/git"
 B = "${WORKDIR}/build"
 
 LOCALVERSION ?= "-${SRCBRANCH}"
+
+
+do_compile_append() {
+        unset i j
+        for config in ${UBOOT_MACHINE}; do
+            i=$(expr $i + 1);
+            for type in ${UBOOT_CONFIG}; do
+                j=$(expr $j + 1);
+                if [ $j -eq $i ]
+                then
+                    if [ -n "${UBOOT_INITIAL_ENV}" ]; then
+                        cp ${WORKDIR}/uEnv-${type}.txt ${B}/${config}/u-boot-initial-env-${type}
+                    fi
+                fi
+            done
+            unset  j
+        done
+        unset  i
+}
+
+do_deploy_append() {
+    if [ -n "${UBOOT_CONFIG}" ]
+    then
+        for config in ${UBOOT_MACHINE}; do
+            i=$(expr $i + 1);
+            for type in ${UBOOT_CONFIG}; do
+                j=$(expr $j + 1);
+                if [ $j -eq $i ]
+                then
+                    if [ -n "${UBOOT_INITIAL_ENV}" ]; then
+			ln -sf ${UBOOT_INITIAL_ENV}-${MACHINE}-${type}-${PV}-${PR} u-boot-env-${type}
+                    fi
+                fi
+            done
+            unset  j
+        done
+        unset  i
+    fi
+}
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 COMPATIBLE_MACHINE = "(nua3500)"

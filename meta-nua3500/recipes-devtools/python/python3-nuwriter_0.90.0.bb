@@ -14,6 +14,12 @@ B =  "${WORKDIR}/build"
 PACKAGES = ""
 do_install[noexec] = "1"
 
+SRC_URI += " file://header.json \
+             file://pack-nand.json \
+             file://pack-sdcard.json \
+             file://pack-spinand.json \
+           "
+
 DEPENDS += " \
     libusb1-native \
     pyinstaller-native \
@@ -37,6 +43,9 @@ do_compile(){
 do_deploy() {
     install -d ${DEPLOYDIR}/${BOOT_TOOLS}/nuwriter
     cp -rf ${B}/nuwriter/* ${DEPLOYDIR}/${BOOT_TOOLS}/nuwriter/
+    cp ${WORKDIR}/pack-nand.json  ${DEPLOYDIR}/${BOOT_TOOLS}/nuwriter/
+    cp ${WORKDIR}/pack-spinand.json  ${DEPLOYDIR}/${BOOT_TOOLS}/nuwriter/
+    cp ${WORKDIR}/pack-sdcard.json  ${DEPLOYDIR}/${BOOT_TOOLS}/nuwriter/
 }
 
 FILES_${PN} = ""

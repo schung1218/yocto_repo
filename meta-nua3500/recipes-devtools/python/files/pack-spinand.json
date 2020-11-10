@@ -1,0 +1,31 @@
+{
+    "image":
+    [
+        {  
+          "offset": "0x000000",
+          "file": "conv/header.bin",
+          "type": 1
+        },
+        {
+          "offset": "0x500000",
+          "file": "fip.bin",
+          "type": 1
+        },
+        {
+          "offset": "0x600000",
+          "file": "Image",
+          "type": 1
+	},
+        {
+          "offset": "0x900000",
+          "file": "u-boot-env-nand",
+          "type": 1
+        },
+        {
+          "offset": "0x2000000",
+          "file": "rootfs.ubi",
+          "type": 1
+        }
+    ]
+}
+
