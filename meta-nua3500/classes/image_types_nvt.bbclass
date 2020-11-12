@@ -40,27 +40,27 @@ fi
 }
 
 IMAGE_CMD_spinand() {
-    (cd ${DEPLOY_DIR_IMAGE}; ln -sf ${IMAGE_NAME}.rootfs.ubi rootfs.ubi)
     generate_fip_image
     (cd ${DEPLOY_DIR_IMAGE}; \
+     ln -sf ${IMAGE_NAME}.rootfs.ubi rootfs.ubi; \
      nuwriter/nuwriter -c nuwriter/pack-spinand.json; \
      ln -sf $(readlink -f pack/pack.bin) ${IMAGE_BASENAME}-${MACHINE}-spinand.pack \
     )
 } 
 
 IMAGE_CMD_nand() {
-    (cd ${DEPLOY_DIR_IMAGE}; ln -sf ${IMAGE_NAME}.rootfs.ubi rootfs.ubi)
     generate_fip_image
     (cd ${DEPLOY_DIR_IMAGE}; \
+     ln -sf ${IMAGE_NAME}.rootfs.ubi rootfs.ubi; \
      nuwriter/nuwriter -c nuwriter/pack-nand.json; \
      ln -sf $(readlink -f pack/pack.bin) ${IMAGE_BASENAME}-${MACHINE}-nand.pack \
     )
 }
 
 IMAGE_CMD_sdcard() {
-    (cd ${DEPLOY_DIR_IMAGE}; ln -sf ${IMAGE_NAME}.rootfs.ext2 rootfs.ext2)
     generate_fip_image
     (cd ${DEPLOY_DIR_IMAGE}; \
+     ln -sf ${IMAGE_NAME}.rootfs.ext2 rootfs.ext2; \
      nuwriter/nuwriter -c nuwriter/pack-sdcard.json; \
      ln -sf $(readlink -f pack/pack.bin) ${IMAGE_BASENAME}-${MACHINE}-sdcard.pack \
     )
