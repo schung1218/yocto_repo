@@ -17,6 +17,11 @@
           "type": 1
 	},
         {
+          "offset": "0x800000",
+          "file": "nua3500-evb.dtb",
+          "type": 1
+        },	
+        {
           "offset": "0x900000",
           "file": "u-boot-initial-env.bin-nand",
           "type": 1

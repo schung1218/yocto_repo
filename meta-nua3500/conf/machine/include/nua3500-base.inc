@@ -36,8 +36,10 @@ EXTRA_IMAGEDEPENDS += "virtual/trusted-firmware-a"
 # =========================================================================
 # optee-os
 # =========================================================================
-OPTEE_PLATFORM="imx"
-OPTEE_PLATFORM_FLAVOR="mx8qxpmek"
+#OPTEE_PLATFORM="imx"
+#OPTEE_PLATFORM_FLAVOR="mx8qxpmek"
+OPTEE_PLATFORM = "nuvoton"
+OPTEE_PLATFORM_FLAVOR = "NUA3500"
 PREFERRED_PROVIDER_virtual/optee-os = "optee-os-nua3500"
 EXTRA_IMAGEDEPENDS += "virtual/optee-os"
 
